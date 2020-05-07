@@ -1,11 +1,19 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, FlatList } from 'react-native';
 import RowMovie from './components/RowMovie';
 import axios from 'axios';
 
 const HomeScreen = ({ navigation }) => {
     const url = 'https://yts.mx/api/v2/list_movies.json';
-    const [movies, setMovies] = React.useState([]);
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() => {
+        getData();
+    }, []);
+
+    const callDetail = (item) => {
+        navigation.navigate('Detail', {movie: item})
+    }
 
     const getData = async() => {
         try {
@@ -18,14 +26,12 @@ const HomeScreen = ({ navigation }) => {
         }
     }
 
-    getData();
-
     return (
         <View style={{ flex: 1 }}>
             <FlatList
                 keyExtractor={({ item }) => item }
                 data={movies}
-                renderItem={({ item }) => <RowMovie item={item} />
+                renderItem={({ item }) => <RowMovie onPress={callDetail} item={item} />
                 }>
             </FlatList>
         </View>
