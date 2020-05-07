@@ -1,0 +1,17 @@
+{
+  "name": "reactmovies",
+  "displayName": "reactmovies",
+  "expo": {
+    "name": "reactmovies",
+    "slug": "reactmovies",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
